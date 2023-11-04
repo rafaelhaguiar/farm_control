@@ -10,11 +10,10 @@ CREATE TABLE IF NOT EXISTS animals (
     FOREIGN KEY (farm_id) REFERENCES farms(farm_id) 
 );
 
-
-INSERT INTO TAB farms (farm_name) VALUES ('Fazenda Gado Forte');
-INSERT INTO TAB farms (farm_name) VALUES ('Fazenda Quinta das Vacas');
-INSERT INTO TAB farms (farm_name) VALUES ('Fazenda Terra do Gado ');
-INSERT INTO TAB farms (farm_name) VALUES ('Fazenda Boiada');
+INSERT INTO farms(farm_name) VALUES ('Fazenda Gado Forte');
+INSERT INTO farms(farm_name) VALUES ('Fazenda Quinta das Vacas');
+INSERT INTO farms(farm_name) VALUES ('Fazenda Terra do Gado');
+INSERT INTO farms(farm_name) VALUES ('Fazenda Boiada');
 
 
 

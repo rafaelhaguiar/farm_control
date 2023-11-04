@@ -1,9 +1,9 @@
 import 'dart:ffi';
 
-import 'package:farm_control/app/data/datasource/animal_datasource.dart';
-import 'package:farm_control/app/data/repository/animal_repository_impl.dart';
-import 'package:farm_control/app/domain/entity/animal_entity.dart';
-import 'package:farm_control/app/domain/repository/animal_repository.dart';
+import 'package:farm_control/app/data/animals/datasource/animal_datasource.dart';
+import 'package:farm_control/app/data/animals/repository/animal_repository_impl.dart';
+import 'package:farm_control/app/domain/animals/entity/animal_entity.dart';
+import 'package:farm_control/app/domain/animals/repository/animal_repository.dart';
 import 'package:farm_control/app/shared/errors/app_exceptions.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';

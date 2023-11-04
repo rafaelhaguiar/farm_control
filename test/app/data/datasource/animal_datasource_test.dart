@@ -1,7 +1,7 @@
 import 'dart:ffi';
 
-import 'package:farm_control/app/data/datasource/animal_datasource.dart';
-import 'package:farm_control/app/domain/entity/animal_entity.dart';
+import 'package:farm_control/app/data/animals/datasource/animal_datasource.dart';
+import 'package:farm_control/app/domain/animals/entity/animal_entity.dart';
 import 'package:farm_control/app/shared/errors/app_exceptions.dart';
 import 'package:farm_control/app/shared/storage/storage_interface.dart';
 import 'package:flutter_test/flutter_test.dart';

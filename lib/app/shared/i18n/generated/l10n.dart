@@ -49,6 +49,56 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Cadastre uma fazenda para começar`
+  String get registerFarmToStart {
+    return Intl.message(
+      'Cadastre uma fazenda para começar',
+      name: 'registerFarmToStart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Selecione uma fazenda para começar`
+  String get selectAFarm {
+    return Intl.message(
+      'Selecione uma fazenda para começar',
+      name: 'selectAFarm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nenhuma fazenda vinculada ao seu usuário`
+  String get anyFarmFinded {
+    return Intl.message(
+      'Nenhuma fazenda vinculada ao seu usuário',
+      name: 'anyFarmFinded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tentar novamente`
+  String get tryAgain {
+    return Intl.message(
+      'Tentar novamente',
+      name: 'tryAgain',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Erro ao carregar fazendas, tente novamente`
+  String get errorToLoadingFarms {
+    return Intl.message(
+      'Erro ao carregar fazendas, tente novamente',
+      name: 'errorToLoadingFarms',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

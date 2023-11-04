@@ -1,7 +1,7 @@
-import 'package:farm_control/app/data/datasource/animal_datasource.dart';
-import 'package:farm_control/app/data/model/animal_model.dart';
-import 'package:farm_control/app/domain/entity/animal_entity.dart';
-import 'package:farm_control/app/domain/repository/animal_repository.dart';
+import 'package:farm_control/app/data/animals/datasource/animal_datasource.dart';
+import 'package:farm_control/app/data/animals/model/animal_model.dart';
+import 'package:farm_control/app/domain/animals/entity/animal_entity.dart';
+import 'package:farm_control/app/domain/animals/repository/animal_repository.dart';
 import 'package:mocktail/mocktail.dart';
 
 final class MockAnimalRepository extends Mock

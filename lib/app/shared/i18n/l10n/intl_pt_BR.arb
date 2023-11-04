@@ -1,1 +1,7 @@
-{}
+{
+  "registerFarmToStart": "Cadastre uma fazenda para começar",
+  "selectAFarm": "Selecione uma fazenda para começar",
+  "anyFarmFinded": "Nenhuma fazenda vinculada ao seu usuário",
+  "tryAgain": "Tentar novamente",
+  "errorToLoadingFarms": "Erro ao carregar fazendas, tente novamente"
+}

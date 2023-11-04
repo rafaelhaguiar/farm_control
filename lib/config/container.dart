@@ -1,10 +1,15 @@
-import 'package:farm_control/app/data/datasource/animal_datasource.dart';
-import 'package:farm_control/app/data/repository/animal_repository_impl.dart';
-import 'package:farm_control/app/domain/repository/animal_repository.dart';
-import 'package:farm_control/app/domain/usecases/delete_animal_usecase.dart';
-import 'package:farm_control/app/domain/usecases/save_animals_usecase.dart';
-import 'package:farm_control/app/domain/usecases/search_animal_usecase.dart';
-import 'package:farm_control/app/domain/usecases/update_animal_usecase.dart';
+import 'package:farm_control/app/data/animals/datasource/animal_datasource.dart';
+import 'package:farm_control/app/data/animals/repository/animal_repository_impl.dart';
+import 'package:farm_control/app/data/farms/datasource/farm_datasource.dart';
+import 'package:farm_control/app/data/farms/repository/farm_repository_impl.dart';
+import 'package:farm_control/app/domain/animals/repository/animal_repository.dart';
+import 'package:farm_control/app/domain/animals/usecases/delete_animal_usecase.dart';
+import 'package:farm_control/app/domain/animals/usecases/save_animals_usecase.dart';
+import 'package:farm_control/app/domain/animals/usecases/search_animal_usecase.dart';
+import 'package:farm_control/app/domain/animals/usecases/update_animal_usecase.dart';
+import 'package:farm_control/app/domain/farms/repository/farm_repository.dart';
+import 'package:farm_control/app/domain/farms/usecases/search_farms_usecase.dart';
+import 'package:farm_control/app/presenter/farm/bloc/farm_bloc.dart';
 import 'package:farm_control/app/shared/storage/storage_interface.dart';
 import 'package:farm_control/app/shared/storage/storage_sqlite_impl.dart';
 import 'package:get_it/get_it.dart';
@@ -17,6 +22,18 @@ void initAppContainer({required Database database}) {
 
   appContainer.registerLazySingleton<StorageInterface>(
       () => StorageSqliteImpl(appContainer<Database>()));
+
+  //Farm domain dependencies
+  appContainer.registerLazySingleton<FarmDatasourceInterface>(
+      () => FarmDatasourceImpl(storage: appContainer<StorageInterface>()));
+  appContainer.registerLazySingleton<FarmRepositoryInterface>(() =>
+      FarmRepositoryImpl(datasource: appContainer<FarmDatasourceInterface>()));
+
+  appContainer.registerLazySingleton<SearchFarmsUsecase>(() =>
+      SearchFarmsUsecase(
+          repositoryInterface: appContainer<FarmRepositoryInterface>()));
+  appContainer.registerFactory<FarmBloc>(
+      () => FarmBloc(searchUsecase: appContainer<SearchFarmsUsecase>()));
 
   //Animal domain dependencies
   appContainer.registerLazySingleton<AnimalDatasourceInterface>(

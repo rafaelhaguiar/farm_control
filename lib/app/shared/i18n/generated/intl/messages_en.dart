@@ -21,5 +21,15 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "anyFarmFinded": MessageLookupByLibrary.simpleMessage(
+            "Nenhuma fazenda vinculada ao seu usuário"),
+        "errorToLoadingFarms": MessageLookupByLibrary.simpleMessage(
+            "Erro ao carregar fazendas, tente novamente"),
+        "registerFarmToStart": MessageLookupByLibrary.simpleMessage(
+            "Cadastre uma fazenda para começar"),
+        "selectAFarm": MessageLookupByLibrary.simpleMessage(
+            "Selecione uma fazenda para começar"),
+        "tryAgain": MessageLookupByLibrary.simpleMessage("Tentar novamente")
+      };
 }

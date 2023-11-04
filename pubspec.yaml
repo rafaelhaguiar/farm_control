@@ -29,6 +29,8 @@ flutter:
   uses-material-design: true
   assets:
     - assets/sql/
+    - assets/images/
+
 flutter_intl:
   enabled: true
   arb_dir: lib/app/shared/i18n/l10n
