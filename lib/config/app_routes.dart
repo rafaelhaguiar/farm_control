@@ -1,3 +1,4 @@
+import 'package:farm_control/app/presenter/splash/page/splash_page.dart';
 import 'package:flutter/material.dart';
 
 enum RouteUrl {
@@ -9,6 +10,6 @@ enum RouteUrl {
 
 class AppRoutes {
   static final allRoutes = {
-    RouteUrl.splash.url: (BuildContext context) => Container(),
+    RouteUrl.splash.url: (BuildContext context) => const SplashPage(),
   };
 }

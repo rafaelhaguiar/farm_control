@@ -7,19 +7,22 @@ void main() {
 
   setUpAll(() {
     animalEntity = const AnimalModel(
-        animalTag: 7000,
-        farmId: 7000,
-        animalWeight: 300,
-        isAlive: true,
-        category: 'Bovino');
+      animalId: 1,
+      animalTag: '000152789651235',
+      farmId: 7000,
+    );
   });
 
   test('AnimalEntity: Test equality', () {
     expect(
-        animalEntity == (animalEntity as AnimalModel).copyWith(animalTag: 7000),
+        animalEntity ==
+            (animalEntity as AnimalModel).copyWith(
+                animalTag: '000152789651235', animalId: 1, farmId: 7000),
         equals(true));
     expect(
-        animalEntity == (animalEntity as AnimalModel).copyWith(animalTag: 8000),
+        animalEntity ==
+            (animalEntity as AnimalModel)
+                .copyWith(animalTag: '990152789651444', animalId: 2, farmId: 4),
         equals(false));
   });
 }

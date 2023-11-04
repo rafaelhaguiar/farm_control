@@ -5,7 +5,7 @@ final class DeletaAnimalUsecase {
 
   DeletaAnimalUsecase({required this.repositoryInterface});
 
-  Future<void> call({required int animalTag}) async {
-    return repositoryInterface.deleteAnimal(animalTag: animalTag);
+  Future<int> call({required int animalId}) async {
+    return repositoryInterface.deleteAnimal(animalId: animalId);
   }
 }

@@ -1,24 +1,31 @@
 import 'package:farm_control/app/domain/entity/animal_entity.dart';
 
 final class AnimalModel extends AnimalEntity {
-  const AnimalModel(
-      {required super.animalTag,
-      required super.farmId,
-      required super.animalWeight,
-      required super.isAlive,
-      required super.category});
+  const AnimalModel({
+    required super.animalId,
+    required super.animalTag,
+    required super.farmId,
+  });
 
-  AnimalModel copyWith(
-          {int? animalTag,
-          int? farmId,
-          double? animalWeight,
-          bool? isAlive,
-          String? category}) =>
+  AnimalModel copyWith({
+    int? animalId,
+    String? animalTag,
+    int? farmId,
+  }) =>
       AnimalModel(
+        animalId: animalId ?? this.animalId,
         animalTag: animalTag ?? this.animalTag,
         farmId: farmId ?? this.farmId,
-        animalWeight: animalWeight ?? this.animalWeight,
-        isAlive: isAlive ?? this.isAlive,
-        category: category ?? this.category,
       );
+
+  Map<String, dynamic> toMap() => {
+        'animal_tag': animalTag,
+        'farm_id': farmId,
+      };
+
+  factory AnimalModel.fromMap({required Map<String, dynamic> map}) =>
+      AnimalModel(
+          animalId: map['animal_id'],
+          animalTag: map['animal_tag'],
+          farmId: map['farm_id']);
 }

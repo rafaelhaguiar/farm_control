@@ -1,32 +1,14 @@
+enum Tabs { animals, farms }
+
 abstract interface class StorageInterface {
-  Future save();
-  Future get();
-  Future delete();
-  Future update();
-}
-
-final class StorageImpl implements StorageInterface {
-  @override
-  Future delete() {
-    // TODO: implement delete
-    throw UnimplementedError();
-  }
-
-  @override
-  Future get() {
-    // TODO: implement get
-    throw UnimplementedError();
-  }
-
-  @override
-  Future save() {
-    // TODO: implement save
-    throw UnimplementedError();
-  }
-
-  @override
-  Future update() {
-    // TODO: implement update
-    throw UnimplementedError();
-  }
+  Future<void> save(
+      {required Tabs table, required List<Map<String, dynamic>> list});
+  Future<List<Map<String, dynamic>>> get({required String query});
+  Future<int> delete(
+      {required Tabs table, required String idFieldName, required int id});
+  Future<void> update(
+      {required Tabs table,
+      required Map<String, dynamic> updateData,
+      required String idFieldName,
+      required int id});
 }

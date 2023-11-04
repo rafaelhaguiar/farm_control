@@ -1,3 +1,4 @@
+import 'package:farm_control/config/app_routes.dart';
 import 'package:flutter/material.dart';
 
 class AppWidget extends StatefulWidget {
@@ -10,8 +11,8 @@ class AppWidget extends StatefulWidget {
 class _AppWidgetState extends State<AppWidget> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      key: ValueKey("MaterialAppKey"),
+    return MaterialApp(
+      routes: AppRoutes.allRoutes,
     );
   }
 }

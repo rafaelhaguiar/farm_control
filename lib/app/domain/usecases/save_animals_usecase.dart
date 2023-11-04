@@ -1,4 +1,4 @@
-import 'package:farm_control/app/domain/entity/animal_entity.dart';
+import 'package:equatable/equatable.dart';
 import 'package:farm_control/app/domain/repository/animal_repository.dart';
 
 final class SaveAnimalsUsecase {
@@ -6,7 +6,22 @@ final class SaveAnimalsUsecase {
 
   SaveAnimalsUsecase({required this.repositoryInterface});
 
-  Future<void> call({required List<AnimalEntity> animalsList}) async {
-    return repositoryInterface.saveAnimals(animalsList: animalsList);
+  Future<void> call(
+      {required List<SaveAnimalsUsecaseParams> animalsList}) async {
+    return repositoryInterface.saveAnimals(
+        animalsList: animalsList
+            .map((e) => {"animal_tag": e.animalTag, "farm_id": e.farmId})
+            .toList());
   }
+}
+
+final class SaveAnimalsUsecaseParams extends Equatable {
+  final String animalTag;
+  final int farmId;
+
+  const SaveAnimalsUsecaseParams(
+      {required this.animalTag, required this.farmId});
+
+  @override
+  List<Object?> get props => [animalTag, farmId];
 }
