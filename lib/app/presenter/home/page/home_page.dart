@@ -29,8 +29,8 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         actions: [
           IconButton(
-              onPressed: () =>
-                  Navigator.pushReplacementNamed(context, RouteUrl.farm.url),
+              onPressed: () => Navigator.pushNamedAndRemoveUntil(context,
+                  RouteUrl.farm.url, ModalRoute.withName(RouteUrl.farm.url)),
               icon: const Icon(Icons.logout_outlined))
         ],
       ),

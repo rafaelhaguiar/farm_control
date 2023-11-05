@@ -14,12 +14,15 @@ class SearchAnimalPage extends StatefulWidget {
 }
 
 class _SearchAnimalPageState extends State<SearchAnimalPage> {
-  final _searchController = TextEditingController();
-  final _searchControllerNode = FocusNode();
+  late final TextEditingController _searchController;
+  late final FocusNode _searchControllerNode;
   late final SearchAnimalBloc bloc;
 
   @override
   void initState() {
+    _searchController = TextEditingController();
+    _searchControllerNode = FocusNode();
+    BlocProvider.of<SearchAnimalBloc>(context);
     super.initState();
   }
 
@@ -28,6 +31,8 @@ class _SearchAnimalPageState extends State<SearchAnimalPage> {
     bloc = BlocProvider.of<SearchAnimalBloc>(context);
 
     final farm = ModalRoute.of(context)?.settings.arguments as FarmEntity;
+    bloc.add(
+        SearchAnimalEvent(args: _searchController.text, farmId: farm.farmId));
     return Scaffold(
       appBar: AppBar(
           title: Text(S.of(context).searchAnimal),
