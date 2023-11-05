@@ -9,6 +9,7 @@ import 'package:farm_control/app/domain/animals/usecases/search_animal_usecase.d
 import 'package:farm_control/app/domain/animals/usecases/update_animal_usecase.dart';
 import 'package:farm_control/app/domain/farms/repository/farm_repository.dart';
 import 'package:farm_control/app/domain/farms/usecases/search_farms_usecase.dart';
+import 'package:farm_control/app/presenter/create/bloc/create_animal_bloc.dart';
 import 'package:farm_control/app/presenter/search/bloc/search_animal_bloc.dart';
 import 'package:farm_control/app/presenter/farm/bloc/farm_bloc.dart';
 import 'package:farm_control/app/shared/storage/storage_interface.dart';
@@ -56,4 +57,6 @@ void initAppContainer({required Database database}) {
           repositoryInterface: appContainer<AnimalRepositoryInterface>()));
   appContainer.registerFactory<SearchAnimalBloc>(
       () => SearchAnimalBloc(usecase: appContainer<SearchAnimalsUsecase>()));
+  appContainer.registerFactory<CreateAnimalBloc>(
+      () => CreateAnimalBloc(usecase: appContainer<SaveAnimalsUsecase>()));
 }

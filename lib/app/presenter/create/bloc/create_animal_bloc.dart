@@ -17,6 +17,7 @@ class CreateAnimalBloc extends Bloc<CreateAnimalEvent, CreateAnimalState> {
                 animalTag: e['animal_tag'], farmId: e['farm_id']))
             .toList();
         await usecase(animalsList: convertedList);
+        await Future.delayed(const Duration(seconds: 2));
         emit(CreateAnimalSuccess());
       } on Exception {
         emit(CreateAnimalError());
