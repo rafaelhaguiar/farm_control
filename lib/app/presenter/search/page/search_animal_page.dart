@@ -77,6 +77,7 @@ class _SearchAnimalPageState extends State<SearchAnimalPage> {
                         itemBuilder: (context, index) {
                           final animal = state.animalList[index];
                           return SearchCardWidget(
+                            farmEntity: farm,
                             animalEntity: animal,
                           );
                         }),

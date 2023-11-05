@@ -7,10 +7,10 @@ import '../../../../fixtures/mocks.dart';
 
 void main() {
   late AnimalRepositoryInterface repositoryInterface;
-  late DeletaAnimalUsecase usecase;
+  late DeleteAnimalUsecase usecase;
   setUpAll(() {
     repositoryInterface = MockAnimalRepository();
-    usecase = DeletaAnimalUsecase(repositoryInterface: repositoryInterface);
+    usecase = DeleteAnimalUsecase(repositoryInterface: repositoryInterface);
   });
   test('DeletaAnimalUsecase: When success need return a void', () async {
     when(() =>

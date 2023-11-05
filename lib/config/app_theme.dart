@@ -15,6 +15,7 @@ class AppTheme {
     textSelectionTheme: const TextSelectionThemeData(
         cursorColor: Color.fromARGB(255, 58, 50, 50)),
     inputDecorationTheme: const InputDecorationTheme(
+      errorMaxLines: 3,
       focusedBorder:
           UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
       focusColor: Color.fromARGB(255, 58, 50, 50),

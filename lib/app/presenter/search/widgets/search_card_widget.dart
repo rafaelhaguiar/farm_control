@@ -1,10 +1,13 @@
 import 'package:farm_control/app/domain/animals/entity/animal_entity.dart';
+import 'package:farm_control/app/domain/farms/entity/farm_entity.dart';
 import 'package:farm_control/config/app_routes.dart';
 import 'package:flutter/material.dart';
 
 class SearchCardWidget extends StatelessWidget {
   final AnimalEntity animalEntity;
-  const SearchCardWidget({super.key, required this.animalEntity});
+  final FarmEntity farmEntity;
+  const SearchCardWidget(
+      {super.key, required this.animalEntity, required this.farmEntity});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,7 @@ class SearchCardWidget extends StatelessWidget {
           gradient: LinearGradient(colors: [Colors.black, Colors.grey])),
       child: InkWell(
         onTap: () => Navigator.pushNamed(context, RouteUrl.animal.url,
-            arguments: animalEntity),
+            arguments: {"animal": animalEntity, "farm": farmEntity}),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

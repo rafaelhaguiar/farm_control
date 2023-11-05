@@ -1,4 +1,4 @@
-import 'package:farm_control/app/presenter/animal/pages/animal_page.dart';
+import 'package:farm_control/app/presenter/animal/page/animal_page.dart';
 import 'package:farm_control/app/presenter/create/page/create_animals_page.dart';
 import 'package:farm_control/app/presenter/search/page/search_animal_page.dart';
 import 'package:farm_control/app/presenter/farm/page/farm_page.dart';

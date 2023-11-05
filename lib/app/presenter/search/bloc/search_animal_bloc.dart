@@ -12,6 +12,9 @@ class SearchAnimalBloc extends Bloc<SearchAnimalEvent, SearchAnimalState> {
     on<SearchAnimalEvent>((event, emit) async {
       try {
         emit(SearchAnimalLoading());
+        if (event.args.isEmpty) {
+          emit(const SearchAnimalSuccess(animalList: []));
+        }
         final searchResult =
             await usecase(args: event.args, farmId: event.farmId);
         await Future.delayed(const Duration(seconds: 2));
