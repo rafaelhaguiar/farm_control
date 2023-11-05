@@ -56,7 +56,7 @@ final class AnimalDatasourceImpl implements AnimalDatasourceInterface {
     try {
       final queryResult = await _storage.get(
           query:
-              'SELECT * FROM ${Tabs.animals.name} where animal_tag like "%$args%" or animal_id like "%$args%" and farm_id');
+              'SELECT * FROM ${Tabs.animals.name} where farm_id = $farmId and (animal_tag like "%$args%" or animal_id like "%$args%")');
       return queryResult.isEmpty
           ? <AnimalEntity>[]
           : queryResult.map((e) => AnimalModel.fromMap(map: e)).toList();
