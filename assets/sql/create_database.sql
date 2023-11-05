@@ -16,5 +16,9 @@ INSERT INTO farms(farm_name) VALUES ('Fazenda Terra do Gado');
 INSERT INTO farms(farm_name) VALUES ('Fazenda Boiada');
 
 
+INSERT INTO animals(animal_tag, farm_id) VALUES ('000000000000001', 1);
+INSERT INTO animals(animal_tag, farm_id) VALUES ('000000000000002', 2);
+INSERT INTO animals(animal_tag, farm_id) VALUES ('000000000000002', 3);
+INSERT INTO animals(animal_tag, farm_id) VALUES ('000000000000002', 4);
 
 

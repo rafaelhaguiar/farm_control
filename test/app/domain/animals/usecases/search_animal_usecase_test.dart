@@ -15,17 +15,20 @@ void main() {
   });
   test('SearchAnimalsUsecase: When success need return a AnimalEntity list',
       () async {
-    when(() => repositoryInterface.searchAnimals(args: any(named: 'args')))
+    when(() => repositoryInterface.searchAnimals(
+            args: any(named: 'args'), farmId: any(named: 'farmId')))
         .thenAnswer((_) async => [MockAnimalEntity()]);
-    expectLater(await usecase(args: 'arg'), isA<List<AnimalEntity>>());
-    verify(() => repositoryInterface.searchAnimals(args: any(named: 'args')))
-        .called(1);
+    expectLater(
+        await usecase(args: 'arg', farmId: 1), isA<List<AnimalEntity>>());
+    verify(() => repositoryInterface.searchAnimals(
+        args: any(named: 'args'), farmId: any(named: 'farmId'))).called(1);
   });
 
   test('SearchMultipleAnimalsUsecase: When error need return a Exception',
       () async {
-    when(() => repositoryInterface.searchAnimals(args: any(named: 'args')))
-        .thenThrow(Exception());
-    expect(() => usecase(args: 'args'), throwsA(isA<Exception>()));
+    when(() => repositoryInterface.searchAnimals(
+        args: any(named: 'args'),
+        farmId: any(named: 'farmId'))).thenThrow(Exception());
+    expect(() => usecase(args: 'args', farmId: 1), throwsA(isA<Exception>()));
   });
 }

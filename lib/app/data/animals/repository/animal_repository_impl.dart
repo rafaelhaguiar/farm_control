@@ -17,9 +17,10 @@ final class AnimalRepositoryImpl implements AnimalRepositoryInterface {
   }
 
   @override
-  Future<List<AnimalEntity>> searchAnimals({required String args}) async {
+  Future<List<AnimalEntity>> searchAnimals(
+      {required String args, required int farmId}) async {
     try {
-      return await datasource.searchAnimals(args: args);
+      return await datasource.searchAnimals(args: args, farmId: farmId);
     } on Exception {
       throw CacheException();
     }

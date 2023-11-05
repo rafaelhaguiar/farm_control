@@ -58,6 +58,7 @@ class _FarmPageState extends State<FarmPage> {
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   color: Colors.grey[400],
+                                  border: Border.all(style: BorderStyle.solid),
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(10))),
                               child: Text(

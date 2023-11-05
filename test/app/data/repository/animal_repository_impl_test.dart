@@ -47,23 +47,25 @@ void main() {
     test(
         'AnimalRepositoryImpl: Should return a List<AnimalEntity> when searchAnimals is success',
         () async {
-      when(() => datasource.searchAnimals(args: any(named: 'args')))
+      when(() => datasource.searchAnimals(
+              args: any(named: 'args'), farmId: any(named: 'farmId')))
           .thenAnswer((_) async => <AnimalEntity>[MockAnimalEntity()]);
-      expect(await repository.searchAnimals(args: 'args'),
+      expect(await repository.searchAnimals(args: 'args', farmId: 1),
           isA<List<AnimalEntity>>());
-      verify(() => datasource.searchAnimals(args: any(named: 'args')))
-          .called(1);
+      verify(() => datasource.searchAnimals(
+          args: any(named: 'args'), farmId: any(named: 'farmId'))).called(1);
     });
 
     test(
         'AnimalRepositoryImpl: Should return a CacheException on any Exception in search',
         () async {
-      when(() => datasource.searchAnimals(args: any(named: 'args')))
-          .thenThrow(Exception());
-      expect(() => repository.searchAnimals(args: 'args'),
+      when(() => datasource.searchAnimals(
+          args: any(named: 'args'),
+          farmId: any(named: 'farmId'))).thenThrow(Exception());
+      expect(() => repository.searchAnimals(args: 'args', farmId: 1),
           throwsA(isA<CacheException>()));
-      verify(() => datasource.searchAnimals(args: any(named: 'args')))
-          .called(1);
+      verify(() => datasource.searchAnimals(
+          args: any(named: 'args'), farmId: any(named: 'farmId'))).called(1);
     });
   });
 

@@ -6,7 +6,8 @@ final class SearchAnimalsUsecase {
 
   SearchAnimalsUsecase({required this.repositoryInterface});
 
-  Future<List<AnimalEntity>> call({required String args}) async {
-    return repositoryInterface.searchAnimals(args: args);
+  Future<List<AnimalEntity>> call(
+      {required String args, required int farmId}) async {
+    return repositoryInterface.searchAnimals(args: args, farmId: farmId);
   }
 }

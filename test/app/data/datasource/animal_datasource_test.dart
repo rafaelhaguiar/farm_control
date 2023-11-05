@@ -124,7 +124,7 @@ void main() {
                 {'animal_id': 1, 'animal_tag': '000321456789654', 'farm_id': 1}
               ]);
       final notEmptySearchResult =
-          await datasource.searchAnimals(args: 'anyArgs');
+          await datasource.searchAnimals(args: 'anyArgs', farmId: 1);
       expect(notEmptySearchResult, isA<List<AnimalEntity>>());
       expect(notEmptySearchResult.isEmpty, equals(false));
       verify(() => storage.get(query: any(named: 'query'))).called(1);
@@ -135,7 +135,8 @@ void main() {
       when(() => storage.get(query: any(named: 'query')))
           .thenAnswer((_) async => []);
 
-      final emptySearchResult = await datasource.searchAnimals(args: 'anyArgs');
+      final emptySearchResult =
+          await datasource.searchAnimals(args: 'anyArgs', farmId: 1);
       expect(emptySearchResult, isA<List<AnimalEntity>>());
       expect(emptySearchResult.isEmpty, equals(true));
       verify(() => storage.get(query: any(named: 'query'))).called(1);
@@ -145,7 +146,7 @@ void main() {
         () async {
       when(() => storage.get(query: any(named: 'query')))
           .thenThrow(CacheException());
-      expect(() => datasource.searchAnimals(args: 'anyArgs'),
+      expect(() => datasource.searchAnimals(args: 'anyArgs', farmId: 1),
           throwsA(isA<CacheException>()));
       verify(() => storage.get(query: any(named: 'query'))).called(1);
     });
