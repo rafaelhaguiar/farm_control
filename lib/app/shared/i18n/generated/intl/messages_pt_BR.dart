@@ -22,14 +22,76 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "amountAnimals": MessageLookupByLibrary.simpleMessage(
+            "Animais vinculados a fazenda: "),
+        "animalExcludeSuccess": MessageLookupByLibrary.simpleMessage(
+            "Animal excluido com sucesso!"),
+        "animalManagment":
+            MessageLookupByLibrary.simpleMessage("Gerenciar Animal"),
         "anyFarmFinded": MessageLookupByLibrary.simpleMessage(
             "Nenhuma fazenda vinculada ao seu usuário"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
+        "changeTag": MessageLookupByLibrary.simpleMessage("Alterar TAG"),
+        "close": MessageLookupByLibrary.simpleMessage("Fechar"),
+        "closeAndClean":
+            MessageLookupByLibrary.simpleMessage("Fechar e limpar a lista"),
+        "confirmDelete":
+            MessageLookupByLibrary.simpleMessage("Deseja realmente deletar?"),
+        "delete": MessageLookupByLibrary.simpleMessage("Deletar"),
+        "deleteTag": MessageLookupByLibrary.simpleMessage("Deletar TAG"),
+        "errorToExclude":
+            MessageLookupByLibrary.simpleMessage("Erro ao excluir"),
+        "errorToExcludeTryAgain": MessageLookupByLibrary.simpleMessage(
+            "Erro ao excluir animal, tente novamente!"),
+        "errorToLoad": MessageLookupByLibrary.simpleMessage("Erro ao carregar"),
         "errorToLoadingFarms": MessageLookupByLibrary.simpleMessage(
             "Erro ao carregar fazendas, tente novamente"),
+        "errorToUpdate":
+            MessageLookupByLibrary.simpleMessage("Erro ao atualizar"),
+        "errorToUpdateTryAgain": MessageLookupByLibrary.simpleMessage(
+            "Erro ao atualizar animal, tente novamente!"),
+        "excludeDone":
+            MessageLookupByLibrary.simpleMessage("Exclusão realizada"),
+        "farm": MessageLookupByLibrary.simpleMessage("Fazenda: "),
+        "farmId": MessageLookupByLibrary.simpleMessage("ID da Fazenda: "),
+        "insert": MessageLookupByLibrary.simpleMessage("Inserir"),
+        "newTag": MessageLookupByLibrary.simpleMessage("Nova TAG"),
+        "noAnimalsFinded":
+            MessageLookupByLibrary.simpleMessage("Nenhum animal encontrado"),
+        "putHereAnimalTag": MessageLookupByLibrary.simpleMessage(
+            "Coloque aqui a TAG do animal"),
+        "register": MessageLookupByLibrary.simpleMessage("Cadastrar"),
+        "registerAnimal":
+            MessageLookupByLibrary.simpleMessage("Cadastrar Animal"),
+        "registerDone":
+            MessageLookupByLibrary.simpleMessage("Cadastro realizado"),
+        "registerDoneSuccess": MessageLookupByLibrary.simpleMessage(
+            "Animais cadastrados com sucesso!"),
+        "registerError":
+            MessageLookupByLibrary.simpleMessage("Erro ao cadastrar"),
+        "registerErrorTryAgain": MessageLookupByLibrary.simpleMessage(
+            "Aconteceu um erro inesperado e não foi possivel salvar"),
         "registerFarmToStart": MessageLookupByLibrary.simpleMessage(
             "Cadastre uma fazenda para começar"),
+        "save": MessageLookupByLibrary.simpleMessage("Salvar"),
+        "search": MessageLookupByLibrary.simpleMessage("Pesquisar"),
+        "searchAnimal":
+            MessageLookupByLibrary.simpleMessage("Pesquisar Animal"),
+        "searchError": MessageLookupByLibrary.simpleMessage(
+            "Erro ao pesquisar, tente novamente"),
+        "searchForTagOrId": MessageLookupByLibrary.simpleMessage(
+            "Pesquisar por tag ou id do Animal"),
         "selectAFarm": MessageLookupByLibrary.simpleMessage(
             "Selecione uma fazenda para começar"),
-        "tryAgain": MessageLookupByLibrary.simpleMessage("Tentar novamente")
+        "tag": MessageLookupByLibrary.simpleMessage("Tag atual: "),
+        "tagCantBeRegisteredAgain": MessageLookupByLibrary.simpleMessage(
+            "A tag já esta cadastrada na lista atual"),
+        "tagValidatorErrorMsg": MessageLookupByLibrary.simpleMessage(
+            "A tag precisa ter 15 caracteres e todos eles precisam ser números"),
+        "tryAgain": MessageLookupByLibrary.simpleMessage("Tentar novamente"),
+        "updateDone":
+            MessageLookupByLibrary.simpleMessage("Atualização realizada"),
+        "updateDoneIfSuccess": MessageLookupByLibrary.simpleMessage(
+            "Atualização realizada com sucesso!")
       };
 }

@@ -1,4 +1,5 @@
 import 'package:farm_control/app/presenter/create/controller/list_notifier_controller.dart';
+import 'package:farm_control/app/shared/i18n/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class CreateCardWidget extends StatelessWidget {
@@ -22,9 +23,9 @@ class CreateCardWidget extends StatelessWidget {
             children: [
               RichText(
                   text: TextSpan(children: [
-                const TextSpan(
-                  text: 'TAG: ',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                TextSpan(
+                  text: S.of(context).tag,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 TextSpan(
                   text: map['animal_tag'],
@@ -33,9 +34,9 @@ class CreateCardWidget extends StatelessWidget {
               ])),
               RichText(
                   text: TextSpan(children: [
-                const TextSpan(
-                  text: 'FARM ID: ',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                TextSpan(
+                  text: S.of(context).farmId,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 TextSpan(
                   text: map['farm_id'].toString(),

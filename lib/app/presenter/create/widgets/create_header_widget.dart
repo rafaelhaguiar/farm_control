@@ -1,5 +1,6 @@
 import 'package:farm_control/app/domain/farms/entity/farm_entity.dart';
 import 'package:farm_control/app/presenter/create/controller/list_notifier_controller.dart';
+import 'package:farm_control/app/shared/i18n/generated/l10n.dart';
 import 'package:farm_control/app/shared/utils/extensions.dart';
 import 'package:flutter/material.dart';
 
@@ -33,17 +34,17 @@ class CreateHeaderWidget extends StatelessWidget {
             validator: (value) {
               _createControllerNode.unfocus();
               if (!(value ?? "").animalTagIsValid()) {
-                return 'A tag precisa ter 15 caracteres e todos eles precisam ser números';
+                return S.of(context).tagValidatorErrorMsg;
               }
               final verifyIfExists = _listNotifier.valueNotifierList.value
                   .where((element) => element['animal_tag'] == value);
               if (verifyIfExists.isNotEmpty) {
-                return 'A tag já esta cadastrada na lista atual';
+                return S.of(context).tagCantBeRegisteredAgain;
               }
               return null;
             },
             decoration:
-                const InputDecoration(hintText: 'Coloque aqui a TAG do animal'),
+                InputDecoration(hintText: S.of(context).putHereAnimalTag),
           ),
         ),
         ElevatedButton(
@@ -55,7 +56,7 @@ class CreateHeaderWidget extends StatelessWidget {
                 });
               }
             },
-            child: const Text('Inserir'))
+            child: Text(S.of(context).insert))
       ],
     );
   }

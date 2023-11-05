@@ -1,6 +1,7 @@
 import 'package:farm_control/app/domain/farms/entity/farm_entity.dart';
 import 'package:farm_control/app/presenter/home/bloc/home_bloc.dart';
 import 'package:farm_control/app/presenter/home/widgets/home_card_widget.dart';
+import 'package:farm_control/app/shared/i18n/generated/l10n.dart';
 import 'package:farm_control/config/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,9 +36,10 @@ class _HomePageState extends State<HomePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Animais vinculados a fazenda: ',
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+              Text(
+                S.of(context).amountAnimals,
+                style:
+                    const TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
               ),
               BlocBuilder<HomeBloc, HomeState>(
                 bloc: bloc,
@@ -53,9 +55,9 @@ class _HomePageState extends State<HomePage> {
                     return const CircularProgressIndicator();
                   }
                   if (state is HomeError) {
-                    return const Text(
-                      'Erro ao carregar',
-                      style: TextStyle(
+                    return Text(
+                      S.of(context).errorToLoad,
+                      style: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 20,
                           color: Colors.red),
@@ -72,13 +74,13 @@ class _HomePageState extends State<HomePage> {
                   crossAxisCount: 2),
               children: [
                 HomeCardWidget(
-                    title: 'Pesquisar Animal',
+                    title: S.of(context).searchAnimal,
                     icon: Icons.search,
                     function: () => Navigator.pushNamed(
                         context, RouteUrl.search.url,
                         arguments: farm)),
                 HomeCardWidget(
-                    title: 'Cadastrar Animal',
+                    title: S.of(context).registerAnimal,
                     icon: Icons.add,
                     function: () => Navigator.pushNamed(
                         context, RouteUrl.create.url,

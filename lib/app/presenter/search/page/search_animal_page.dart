@@ -1,6 +1,7 @@
 import 'package:farm_control/app/domain/farms/entity/farm_entity.dart';
 import 'package:farm_control/app/presenter/search/bloc/search_animal_bloc.dart';
 import 'package:farm_control/app/presenter/search/widgets/search_card_widget.dart';
+import 'package:farm_control/app/shared/i18n/generated/l10n.dart';
 import 'package:farm_control/config/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,7 +30,7 @@ class _SearchAnimalPageState extends State<SearchAnimalPage> {
     final farm = ModalRoute.of(context)?.settings.arguments as FarmEntity;
     return Scaffold(
       appBar: AppBar(
-          title: const Text('Pesquisar animal'),
+          title: Text(S.of(context).searchAnimal),
           centerTitle: true,
           actions: [
             IconButton(
@@ -47,8 +48,8 @@ class _SearchAnimalPageState extends State<SearchAnimalPage> {
                   child: TextFormField(
                     controller: _searchController,
                     focusNode: _searchControllerNode,
-                    decoration: const InputDecoration(
-                        hintText: 'Pesquisar por tag ou id do Animal'),
+                    decoration: InputDecoration(
+                        hintText: S.of(context).searchForTagOrId),
                   ),
                 ),
                 ElevatedButton(
@@ -57,7 +58,7 @@ class _SearchAnimalPageState extends State<SearchAnimalPage> {
                       bloc.add(SearchAnimalEvent(
                           args: _searchController.text, farmId: farm.farmId));
                     },
-                    child: const Text('Pesquisar'))
+                    child: Text(S.of(context).search))
               ],
             ),
           ),
@@ -79,9 +80,9 @@ class _SearchAnimalPageState extends State<SearchAnimalPage> {
                 }
                 if (state is SearchAnimalSuccess) {
                   if (state.animalList.isEmpty) {
-                    return const Column(
+                    return Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [Text('Nenhum animal encontrado')]);
+                        children: [Text(S.of(context).noAnimalsFinded)]);
                   }
                   return Expanded(
                     child: ListView.builder(
@@ -96,9 +97,9 @@ class _SearchAnimalPageState extends State<SearchAnimalPage> {
                   );
                 }
                 if (state is SearchAnimalError) {
-                  return const Column(
+                  return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Text('Erro ao pesquisar, tente novamente')]);
+                      children: [Text(S.of(context).searchError)]);
                 }
                 return Container();
               })

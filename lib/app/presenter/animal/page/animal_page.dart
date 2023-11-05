@@ -5,6 +5,7 @@ import 'package:farm_control/app/presenter/animal/blocs/delete/bloc/delete_anima
 import 'package:farm_control/app/presenter/animal/blocs/update/bloc/update_animal_bloc.dart';
 import 'package:farm_control/app/presenter/home/bloc/home_bloc.dart';
 import 'package:farm_control/app/presenter/search/bloc/search_animal_bloc.dart';
+import 'package:farm_control/app/shared/i18n/generated/l10n.dart';
 import 'package:farm_control/app/shared/utils/extensions.dart';
 import 'package:farm_control/config/app_routes.dart';
 import 'package:farm_control/config/container.dart';
@@ -43,7 +44,7 @@ class _AnimalPageState extends State<AnimalPage> {
     _updateAnimalTagController.text = _animalEntity!.animalTag;
     return Scaffold(
       appBar: AppBar(
-          title: const Text('Gerenciar Animal'),
+          title: Text(S.of(context).animalManagment),
           centerTitle: true,
           actions: [
             IconButton(
@@ -65,11 +66,11 @@ class _AnimalPageState extends State<AnimalPage> {
                   barrierDismissible: false,
                   builder: (context) => AlertDialog(
                     backgroundColor: const Color.fromARGB(255, 184, 214, 185),
-                    title: const Text(
-                      'Exclusão realizada',
+                    title: Text(
+                      S.of(context).excludeDone,
                       textAlign: TextAlign.center,
                     ),
-                    content: const Text('Animal excluido com sucesso!'),
+                    content: Text(S.of(context).animalExcludeSuccess),
                     actions: [
                       InkWell(
                           onTap: () {
@@ -93,20 +94,19 @@ class _AnimalPageState extends State<AnimalPage> {
                   barrierDismissible: false,
                   builder: (context) => AlertDialog(
                     backgroundColor: const Color.fromARGB(255, 213, 121, 121),
-                    title: const Text(
-                      'Erro ao excluir',
+                    title: Text(
+                      S.of(context).errorToExclude,
                       textAlign: TextAlign.center,
                     ),
-                    content:
-                        const Text('Erro ao excluir animal, tente novamente!'),
+                    content: Text(S.of(context).errorToExcludeTryAgain),
                     actions: [
                       InkWell(
                           onTap: () {
                             Navigator.pop(context);
                           },
-                          child: const Text(
-                            'Fechar',
-                            style: TextStyle(
+                          child: Text(
+                            S.of(context).close,
+                            style: const TextStyle(
                               color: Color.fromARGB(255, 31, 31, 31),
                               fontWeight: FontWeight.bold,
                             ),
@@ -126,11 +126,11 @@ class _AnimalPageState extends State<AnimalPage> {
                   barrierDismissible: false,
                   builder: (context) => AlertDialog(
                     backgroundColor: const Color.fromARGB(255, 184, 214, 185),
-                    title: const Text(
-                      'Atualização realizada',
+                    title: Text(
+                      S.of(context).updateDone,
                       textAlign: TextAlign.center,
                     ),
-                    content: const Text('Atualização realizada com sucesso!'),
+                    content: Text(S.of(context).updateDoneIfSuccess),
                     actions: [
                       InkWell(
                           onTap: () {
@@ -153,20 +153,19 @@ class _AnimalPageState extends State<AnimalPage> {
                   barrierDismissible: false,
                   builder: (context) => AlertDialog(
                     backgroundColor: const Color.fromARGB(255, 213, 121, 121),
-                    title: const Text(
-                      'Erro ao atualizar',
+                    title: Text(
+                      S.of(context).errorToUpdate,
                       textAlign: TextAlign.center,
                     ),
-                    content: const Text(
-                        'Erro ao atualizar animal, tente novamente!'),
+                    content: Text(S.of(context).errorToUpdateTryAgain),
                     actions: [
                       InkWell(
                           onTap: () {
                             Navigator.pop(context);
                           },
-                          child: const Text(
-                            'Fechar',
-                            style: TextStyle(
+                          child: Text(
+                            S.of(context).close,
+                            style: const TextStyle(
                               color: Color.fromARGB(255, 31, 31, 31),
                               fontWeight: FontWeight.bold,
                             ),
@@ -231,18 +230,20 @@ class _AnimalPageState extends State<AnimalPage> {
                           text: TextSpan(
                               style: const TextStyle(color: Colors.black),
                               children: [
-                            const TextSpan(
-                                text: 'FARM ID: ',
-                                style: TextStyle(fontWeight: FontWeight.bold)),
+                            TextSpan(
+                                text: S.of(context).farmId,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold)),
                             TextSpan(text: _animalEntity!.farmId.toString()),
                           ])),
                       RichText(
                           text: TextSpan(
                               style: const TextStyle(color: Colors.black),
                               children: [
-                            const TextSpan(
-                                text: 'FARM: ',
-                                style: TextStyle(fontWeight: FontWeight.bold)),
+                            TextSpan(
+                                text: S.of(context).farm,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold)),
                             TextSpan(text: farmEntity.farmName),
                           ])),
                     ],
@@ -265,7 +266,7 @@ class _AnimalPageState extends State<AnimalPage> {
                     context: context,
                     barrierDismissible: false,
                     builder: (context) => AlertDialog(
-                      title: const Text('Alterar TAG',
+                      title: Text(S.of(context).changeTag,
                           textAlign: TextAlign.center),
                       actionsPadding: const EdgeInsets.all(20),
                       content: Form(
@@ -279,9 +280,9 @@ class _AnimalPageState extends State<AnimalPage> {
                                 text: TextSpan(
                                     style: const TextStyle(color: Colors.black),
                                     children: [
-                                      const TextSpan(
-                                        text: 'Tag atual: ',
-                                        style: TextStyle(
+                                      TextSpan(
+                                        text: S.of(context).tag,
+                                        style: const TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.bold),
                                       ),
@@ -295,12 +296,12 @@ class _AnimalPageState extends State<AnimalPage> {
                               controller: _updateAnimalTagController,
                               validator: (value) {
                                 if (!(value ?? "").animalTagIsValid()) {
-                                  return 'A tag precisa ter 15 caracteres e todos eles precisam ser números';
+                                  return S.of(context).tagValidatorErrorMsg;
                                 }
                                 return null;
                               },
-                              decoration:
-                                  const InputDecoration(hintText: 'Nova TAG'),
+                              decoration: InputDecoration(
+                                  hintText: S.of(context).newTag),
                               textAlign: TextAlign.center,
                             ),
                           ],
@@ -312,9 +313,9 @@ class _AnimalPageState extends State<AnimalPage> {
                             onTap: () {
                               Navigator.pop(context);
                             },
-                            child: const Text(
-                              'Cancelar',
-                              style: TextStyle(
+                            child: Text(
+                              S.of(context).cancel,
+                              style: const TextStyle(
                                 fontSize: 18,
                                 color: Color.fromARGB(255, 31, 31, 31),
                                 fontWeight: FontWeight.bold,
@@ -335,9 +336,9 @@ class _AnimalPageState extends State<AnimalPage> {
                                         args: '', farmId: farmEntity.farmId));
                               }
                             },
-                            child: const Text(
-                              'Salvar',
-                              style: TextStyle(
+                            child: Text(
+                              S.of(context).save,
+                              style: const TextStyle(
                                 fontSize: 18,
                                 color: Color.fromARGB(255, 31, 31, 31),
                                 fontWeight: FontWeight.bold,
@@ -358,19 +359,19 @@ class _AnimalPageState extends State<AnimalPage> {
                     context: context,
                     barrierDismissible: false,
                     builder: (context) => AlertDialog(
-                      title: const Text('Alterar TAG',
+                      title: Text(S.of(context).deleteTag,
                           textAlign: TextAlign.center),
                       actionsPadding: const EdgeInsets.all(20),
-                      content: const Text('Deseja realmente deletar?'),
+                      content: Text(S.of(context).confirmDelete),
                       actionsAlignment: MainAxisAlignment.spaceEvenly,
                       actions: [
                         InkWell(
                             onTap: () {
                               Navigator.pop(context);
                             },
-                            child: const Text(
-                              'Cancelar',
-                              style: TextStyle(
+                            child: Text(
+                              S.of(context).cancel,
+                              style: const TextStyle(
                                 fontSize: 18,
                                 color: Color.fromARGB(255, 31, 31, 31),
                                 fontWeight: FontWeight.bold,
@@ -382,9 +383,9 @@ class _AnimalPageState extends State<AnimalPage> {
                                   animalId: _animalEntity!.animalId));
                               Navigator.pop(context);
                             },
-                            child: const Text(
-                              'Deletar',
-                              style: TextStyle(
+                            child: Text(
+                              S.of(context).delete,
+                              style: const TextStyle(
                                 fontSize: 18,
                                 color: Color.fromARGB(255, 31, 31, 31),
                                 fontWeight: FontWeight.bold,

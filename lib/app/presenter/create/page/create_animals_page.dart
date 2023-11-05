@@ -4,6 +4,7 @@ import 'package:farm_control/app/presenter/create/controller/list_notifier_contr
 import 'package:farm_control/app/presenter/create/widgets/create_card_widget.dart';
 import 'package:farm_control/app/presenter/create/widgets/create_header_widget.dart';
 import 'package:farm_control/app/presenter/home/bloc/home_bloc.dart';
+import 'package:farm_control/app/shared/i18n/generated/l10n.dart';
 import 'package:farm_control/config/app_routes.dart';
 import 'package:farm_control/config/container.dart';
 
@@ -41,7 +42,7 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cadastrar'),
+        title: Text(S.of(context).register),
         centerTitle: true,
         actions: [
           IconButton(
@@ -61,20 +62,19 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
                 barrierDismissible: false,
                 builder: (context) => AlertDialog(
                   backgroundColor: const Color.fromARGB(255, 184, 149, 147),
-                  title: const Text(
-                    'Erro ao cadastrar',
+                  title: Text(
+                    S.of(context).registerError,
                     textAlign: TextAlign.center,
                   ),
-                  content: const Text(
-                      'Aconteceu um erro inesperado e não foi possivel salvar'),
+                  content: Text(S.of(context).registerErrorTryAgain),
                   actions: [
                     InkWell(
                         onTap: () {
                           Navigator.pop(context);
                         },
-                        child: const Text(
-                          'Fechar',
-                          style: TextStyle(
+                        child: Text(
+                          S.of(context).close,
+                          style: const TextStyle(
                             color: Color.fromARGB(255, 31, 31, 31),
                             fontWeight: FontWeight.bold,
                           ),
@@ -84,9 +84,9 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
                           Navigator.pop(context);
                           _listNotifier.clear();
                         },
-                        child: const Text(
-                          'Fechar e limpar a lista',
-                          style: TextStyle(
+                        child: Text(
+                          S.of(context).closeAndClean,
+                          style: const TextStyle(
                             color: Color.fromARGB(255, 31, 31, 31),
                             fontWeight: FontWeight.bold,
                           ),
@@ -102,19 +102,19 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
                 barrierDismissible: false,
                 builder: (context) => AlertDialog(
                   backgroundColor: const Color.fromARGB(255, 184, 214, 185),
-                  title: const Text(
-                    'Cadastro realizado',
+                  title: Text(
+                    S.of(context).registerDone,
                     textAlign: TextAlign.center,
                   ),
-                  content: const Text('Animais cadastrados com sucesso!'),
+                  content: Text(S.of(context).registerDoneSuccess),
                   actions: [
                     InkWell(
                         onTap: () {
                           Navigator.pop(context);
                         },
-                        child: const Text(
-                          'Fechar',
-                          style: TextStyle(
+                        child: Text(
+                          S.current.close,
+                          style: const TextStyle(
                             color: Color.fromARGB(255, 31, 31, 31),
                             fontWeight: FontWeight.bold,
                           ),
@@ -124,9 +124,9 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
                           Navigator.pop(context);
                           _listNotifier.clear();
                         },
-                        child: const Text(
-                          'Fechar e limpar a lista',
-                          style: TextStyle(
+                        child: Text(
+                          S.of(context).closeAndClean,
+                          style: const TextStyle(
                             color: Color.fromARGB(255, 31, 31, 31),
                             fontWeight: FontWeight.bold,
                           ),
@@ -193,7 +193,7 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
                       mapList: _listNotifier.valueNotifierList.value));
                 }
               },
-              child: const Text('Salvar'))),
+              child: Text(S.of(context).save))),
     );
   }
 }

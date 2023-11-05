@@ -1,4 +1,5 @@
 import 'package:farm_control/app/domain/farms/entity/farm_entity.dart';
+import 'package:farm_control/app/shared/i18n/generated/l10n.dart';
 import 'package:farm_control/config/app_routes.dart';
 import 'package:flutter/material.dart';
 
@@ -36,9 +37,9 @@ class FarmCardWidget extends StatelessWidget {
                         style:
                             const TextStyle(color: Colors.black, fontSize: 16),
                         children: [
-                      const TextSpan(
-                          text: 'Fazenda: ',
-                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(
+                          text: S.of(context).farm,
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
                       TextSpan(text: item.farmName),
                     ])),
                 const SizedBox(
