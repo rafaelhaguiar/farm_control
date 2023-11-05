@@ -48,6 +48,7 @@ class _SearchAnimalPageState extends State<SearchAnimalPage> {
                   child: TextFormField(
                     controller: _searchController,
                     focusNode: _searchControllerNode,
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                         hintText: S.of(context).searchForTagOrId),
                   ),

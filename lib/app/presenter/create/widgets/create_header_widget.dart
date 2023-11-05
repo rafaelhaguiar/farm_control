@@ -25,39 +25,49 @@ class CreateHeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: TextFormField(
-            controller: _createController,
-            focusNode: _createControllerNode,
-            validator: (value) {
-              _createControllerNode.unfocus();
-              if (!(value ?? "").animalTagIsValid()) {
-                return S.of(context).tagValidatorErrorMsg;
-              }
-              final verifyIfExists = _listNotifier.valueNotifierList.value
-                  .where((element) => element['animal_tag'] == value);
-              if (verifyIfExists.isNotEmpty) {
-                return S.of(context).tagCantBeRegisteredAgain;
-              }
-              return null;
-            },
-            decoration:
-                InputDecoration(hintText: S.of(context).putHereAnimalTag),
+    return Container(
+      margin: const EdgeInsets.all(7),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: TextFormField(
+              controller: _createController,
+              focusNode: _createControllerNode,
+              keyboardType: TextInputType.number,
+              maxLength: 15,
+              validator: (value) {
+                _createControllerNode.unfocus();
+                if (!(value ?? "").animalTagIsValid()) {
+                  return S.of(context).tagValidatorErrorMsg;
+                }
+                final verifyIfExists = _listNotifier.valueNotifierList.value
+                    .where((element) => element['animal_tag'] == value);
+                if (verifyIfExists.isNotEmpty) {
+                  return S.of(context).tagCantBeRegisteredAgain;
+                }
+                return null;
+              },
+              decoration: InputDecoration(
+                hintText: S.of(context).putHereAnimalTag,
+              ),
+            ),
           ),
-        ),
-        ElevatedButton(
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                _listNotifier.addValue(map: {
-                  'animal_tag': _createController.text,
-                  'farm_id': farm.farmId
-                });
-              }
-            },
-            child: Text(S.of(context).insert))
-      ],
+          const SizedBox(
+            width: 10,
+          ),
+          ElevatedButton(
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  _listNotifier.addValue(map: {
+                    'animal_tag': _createController.text,
+                    'farm_id': farm.farmId
+                  });
+                }
+              },
+              child: Text(S.of(context).insert))
+        ],
+      ),
     );
   }
 }
