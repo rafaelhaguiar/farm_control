@@ -58,6 +58,8 @@ class _AnimalPageState extends State<AnimalPage> {
             bloc: _deleteBloc,
             listener: (context, state) {
               if (state is DeleteAnimalSuccess) {
+                BlocProvider.of<SearchAnimalBloc>(context).add(
+                    SearchAnimalEvent(args: '', farmId: farmEntity.farmId));
                 BlocProvider.of<HomeBloc>(context)
                     .add(HomeEvent(farmEntity.farmId));
 

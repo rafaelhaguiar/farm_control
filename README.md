@@ -1,20 +1,20 @@
 # farm_control
 
 
-Informaões:
+Informações:
 
     - App feito utilizando Flutter 3.13.6 e Dart 3.1.3;
     - Optei por não restringir como UNIQUE as TAGs por entender que dependendo do cenário tags podem ser reutilizados (pensando por exemplo se a tag for um RING RFID);
     - Criei script para que o App já tenha alguns dados populados no banco conforme: farm\assets\sql;
-    - Adicionei recursos de internacionalização suporte Português e Inglês.
+    - Adicionei recursos de internacionalização: suporte Português e Inglês.
 
 
 Pontos do desafio:
-✅ - Tebelas com relacionamentos
-✅ - CRUD de animais: Create na tela de criação, Read na Home e tela de Pesquisa, Update e Delete na tela do Animal selecionado,
-✅ - Cadastramento em lote, INSERT configurado com TRANSACTION,
-✅ - Contador de animais na Home com reatividade quando da remoção ou adiação de animais a partir de outras telas,
-✅ - Testes unitário: Feitos.
+- Tebelas com relacionamentos, ✅ 
+- CRUD de animais: Create na tela de criação, Read na Home e tela de Pesquisa, Update e Delete na tela do Animal selecionado,  ✅ 
+- Cadastramento em lote, INSERT configurado com TRANSACTION, ✅ 
+- Contador de animais na Home com reatividade quando da remoção ou adiação de animais a partir de outras telas, ✅ 
+- Testes unitário: Feitos. ✅ 
 
 
 Arquitetura do Projetos:
