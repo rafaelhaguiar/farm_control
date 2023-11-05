@@ -5,6 +5,7 @@ import 'package:farm_control/config/app_routes.dart';
 import 'package:farm_control/config/app_theme.dart';
 import 'package:farm_control/config/container.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -18,6 +19,8 @@ class AppWidget extends StatefulWidget {
 class _AppWidgetState extends State<AppWidget> {
   @override
   Widget build(BuildContext context) {
+    WidgetsFlutterBinding.ensureInitialized();
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MultiBlocProvider(
       providers: [
         BlocProvider<SearchAnimalBloc>(

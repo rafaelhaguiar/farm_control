@@ -27,6 +27,12 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(farm.farmName),
         centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () =>
+                  Navigator.pushReplacementNamed(context, RouteUrl.farm.url),
+              icon: const Icon(Icons.logout_outlined))
+        ],
       ),
       body: Column(
         children: [
