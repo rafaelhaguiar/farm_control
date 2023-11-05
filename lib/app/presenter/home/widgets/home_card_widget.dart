@@ -18,10 +18,12 @@ class HomeCardWidget extends StatelessWidget {
         child: Container(
           margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
           decoration: const BoxDecoration(
+              border: Border.fromBorderSide(
+                  BorderSide(color: Colors.black, width: 1.5)),
               gradient: LinearGradient(colors: [
-            Colors.grey,
-            Colors.white,
-          ])),
+                Colors.grey,
+                Colors.white,
+              ])),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
