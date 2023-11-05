@@ -16,7 +16,7 @@ class HomeCardWidget extends StatelessWidget {
     return InkWell(
         onTap: function,
         child: Container(
-          margin: const EdgeInsets.only(top: 5, left: 5, right: 5),
+          margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
           decoration: const BoxDecoration(
               gradient: LinearGradient(colors: [
             Colors.grey,

@@ -4,6 +4,7 @@ import 'package:farm_control/app/data/farms/datasource/farm_datasource.dart';
 import 'package:farm_control/app/data/farms/repository/farm_repository_impl.dart';
 import 'package:farm_control/app/domain/animals/repository/animal_repository.dart';
 import 'package:farm_control/app/domain/animals/usecases/delete_animal_usecase.dart';
+import 'package:farm_control/app/domain/animals/usecases/get_amount_animals_usecase.dart';
 import 'package:farm_control/app/domain/animals/usecases/save_animals_usecase.dart';
 import 'package:farm_control/app/domain/animals/usecases/search_animal_usecase.dart';
 import 'package:farm_control/app/domain/animals/usecases/update_animal_usecase.dart';
@@ -12,6 +13,7 @@ import 'package:farm_control/app/domain/farms/usecases/search_farms_usecase.dart
 import 'package:farm_control/app/presenter/animal/blocs/delete/bloc/delete_animal_bloc.dart';
 import 'package:farm_control/app/presenter/animal/blocs/update/bloc/update_animal_bloc.dart';
 import 'package:farm_control/app/presenter/create/bloc/create_animal_bloc.dart';
+import 'package:farm_control/app/presenter/home/bloc/home_bloc.dart';
 import 'package:farm_control/app/presenter/search/bloc/search_animal_bloc.dart';
 import 'package:farm_control/app/presenter/farm/bloc/farm_bloc.dart';
 import 'package:farm_control/app/shared/storage/storage_interface.dart';
@@ -57,6 +59,10 @@ void initAppContainer({required Database database}) {
   appContainer.registerLazySingleton<DeleteAnimalUsecase>(() =>
       DeleteAnimalUsecase(
           repositoryInterface: appContainer<AnimalRepositoryInterface>()));
+
+  appContainer.registerLazySingleton<GetAmountAnimalsUsecase>(() =>
+      GetAmountAnimalsUsecase(
+          repositoryInterface: appContainer<AnimalRepositoryInterface>()));
   appContainer.registerFactory<SearchAnimalBloc>(
       () => SearchAnimalBloc(usecase: appContainer<SearchAnimalsUsecase>()));
   appContainer.registerFactory<CreateAnimalBloc>(
@@ -65,4 +71,6 @@ void initAppContainer({required Database database}) {
       () => DeleteAnimalBloc(usecase: appContainer<DeleteAnimalUsecase>()));
   appContainer.registerFactory<UpdateAnimalBloc>(
       () => UpdateAnimalBloc(usecase: appContainer<UpdateAnimalUsecase>()));
+  appContainer.registerFactory<HomeBloc>(
+      () => HomeBloc(usecase: appContainer<GetAmountAnimalsUsecase>()));
 }

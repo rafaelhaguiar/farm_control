@@ -44,4 +44,13 @@ final class AnimalRepositoryImpl implements AnimalRepositoryInterface {
       throw CacheException();
     }
   }
+
+  @override
+  Future<int> getAmountAnimals({required int farmId}) async {
+    try {
+      return await datasource.getAmountAnimals(farmId: farmId);
+    } on Exception {
+      throw CacheException();
+    }
+  }
 }

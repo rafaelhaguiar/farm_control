@@ -1,7 +1,7 @@
 import 'package:farm_control/app/domain/farms/entity/farm_entity.dart';
 import 'package:farm_control/app/presenter/search/bloc/search_animal_bloc.dart';
 import 'package:farm_control/app/presenter/search/widgets/search_card_widget.dart';
-import 'package:farm_control/config/container.dart';
+import 'package:farm_control/config/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,16 +15,28 @@ class SearchAnimalPage extends StatefulWidget {
 class _SearchAnimalPageState extends State<SearchAnimalPage> {
   final _searchController = TextEditingController();
   final _searchControllerNode = FocusNode();
+  late final SearchAnimalBloc bloc;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+    bloc = BlocProvider.of<SearchAnimalBloc>(context);
+
     final farm = ModalRoute.of(context)?.settings.arguments as FarmEntity;
-    final bloc = appContainer.get<SearchAnimalBloc>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pesquisar animal'),
-        centerTitle: true,
-      ),
+          title: const Text('Pesquisar animal'),
+          centerTitle: true,
+          actions: [
+            IconButton(
+                onPressed: () => Navigator.popUntil(
+                    context, ModalRoute.withName(RouteUrl.home.url)),
+                icon: const Icon(Icons.home))
+          ]),
       body: Column(
         children: [
           Container(

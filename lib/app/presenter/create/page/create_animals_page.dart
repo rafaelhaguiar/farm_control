@@ -3,6 +3,8 @@ import 'package:farm_control/app/presenter/create/bloc/create_animal_bloc.dart';
 import 'package:farm_control/app/presenter/create/controller/list_notifier_controller.dart';
 import 'package:farm_control/app/presenter/create/widgets/create_card_widget.dart';
 import 'package:farm_control/app/presenter/create/widgets/create_header_widget.dart';
+import 'package:farm_control/app/presenter/home/bloc/home_bloc.dart';
+import 'package:farm_control/config/app_routes.dart';
 import 'package:farm_control/config/container.dart';
 
 import 'package:flutter/material.dart';
@@ -41,6 +43,12 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
       appBar: AppBar(
         title: const Text('Cadastrar'),
         centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () => Navigator.popUntil(
+                  context, ModalRoute.withName(RouteUrl.home.url)),
+              icon: const Icon(Icons.home))
+        ],
       ),
       body: Form(
         key: _formKey,
@@ -88,6 +96,7 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
               );
             }
             if (state is CreateAnimalSuccess) {
+              BlocProvider.of<HomeBloc>(context).add(HomeEvent(farm.farmId));
               showDialog(
                 context: context,
                 barrierDismissible: false,

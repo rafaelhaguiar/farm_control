@@ -151,4 +151,25 @@ void main() {
       verify(() => storage.get(query: any(named: 'query'))).called(1);
     });
   });
+
+  group('AnimalDatasourceImpl: getAmount tests', () {
+    test(
+        'AnimalDatasourceImpl: Should be success when getAmount an Animal and return 1',
+        () async {
+      when(() => storage.get(query: any(named: 'query')))
+          .thenAnswer((_) async => [{}]);
+      expect(await datasource.getAmountAnimals(farmId: 1), equals(1));
+      verify(() => storage.get(query: any(named: 'query'))).called(1);
+    });
+
+    test(
+        'AnimalDatasourceImpl: On getAmount exception the exception must be a CacheException',
+        () async {
+      when(() => storage.get(query: any(named: 'query')))
+          .thenThrow(CacheException());
+      expect(() => datasource.getAmountAnimals(farmId: 1),
+          throwsA(isA<CacheException>()));
+      verify(() => storage.get(query: any(named: 'query'))).called(1);
+    });
+  });
 }

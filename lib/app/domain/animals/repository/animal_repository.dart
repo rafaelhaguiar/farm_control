@@ -6,4 +6,5 @@ abstract interface class AnimalRepositoryInterface {
   Future<List<AnimalEntity>> searchAnimals(
       {required String args, required int farmId});
   Future<int> deleteAnimal({required int animalId});
+  Future<int> getAmountAnimals({required int farmId});
 }

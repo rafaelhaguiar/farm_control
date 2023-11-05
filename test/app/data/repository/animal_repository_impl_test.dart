@@ -115,4 +115,26 @@ void main() {
       verify(() => datasource.updateAnimal(animal: animalModelMock)).called(1);
     });
   });
+
+  group('AnimalRepositoryImpl: getAmount tests', () {
+    test('AnimalRepositoryImpl: Should return 1 when getAmount is success',
+        () async {
+      when(() => datasource.getAmountAnimals(farmId: any(named: 'farmId')))
+          .thenAnswer((_) async => 1);
+      expect(await repository.getAmountAnimals(farmId: 597), equals(1));
+      verify(() => datasource.getAmountAnimals(farmId: any(named: 'farmId')))
+          .called(1);
+    });
+
+    test(
+        'AnimalRepositoryImpl: Should return a CacheException on any Exception in farmId',
+        () async {
+      when(() => datasource.getAmountAnimals(farmId: any(named: 'farmId')))
+          .thenThrow(Exception());
+      expect(() => repository.getAmountAnimals(farmId: 597),
+          throwsA(isA<CacheException>()));
+      verify(() => datasource.getAmountAnimals(farmId: any(named: 'farmId')))
+          .called(1);
+    });
+  });
 }

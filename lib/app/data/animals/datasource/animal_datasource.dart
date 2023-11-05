@@ -6,6 +6,8 @@ abstract interface class AnimalDatasourceInterface {
   Future<void> saveAnimals({required List<Map<String, dynamic>> animalList});
   Future<void> updateAnimal({required AnimalEntity animal});
   Future<int> deleteAnimal({required int animalId});
+  Future<int> getAmountAnimals({required int farmId});
+
   Future<List<AnimalEntity>> searchAnimals(
       {required String args, required int farmId});
 }
@@ -58,6 +60,18 @@ final class AnimalDatasourceImpl implements AnimalDatasourceInterface {
       return queryResult.isEmpty
           ? <AnimalEntity>[]
           : queryResult.map((e) => AnimalModel.fromMap(map: e)).toList();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<int> getAmountAnimals({required int farmId}) async {
+    try {
+      final queryResult = await _storage.get(
+          query:
+              'SELECT animal_id FROM ${Tabs.animals.name} where farm_id = $farmId');
+      return queryResult.length;
     } catch (e) {
       rethrow;
     }

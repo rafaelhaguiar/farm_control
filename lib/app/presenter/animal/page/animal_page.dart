@@ -3,6 +3,7 @@ import 'package:farm_control/app/domain/animals/entity/animal_entity.dart';
 import 'package:farm_control/app/domain/farms/entity/farm_entity.dart';
 import 'package:farm_control/app/presenter/animal/blocs/delete/bloc/delete_animal_bloc.dart';
 import 'package:farm_control/app/presenter/animal/blocs/update/bloc/update_animal_bloc.dart';
+import 'package:farm_control/app/presenter/home/bloc/home_bloc.dart';
 import 'package:farm_control/app/presenter/search/bloc/search_animal_bloc.dart';
 import 'package:farm_control/app/shared/utils/extensions.dart';
 import 'package:farm_control/config/app_routes.dart';
@@ -42,15 +43,23 @@ class _AnimalPageState extends State<AnimalPage> {
     _updateAnimalTagController.text = _animalEntity!.animalTag;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Gerenciar Animal'),
-        centerTitle: true,
-      ),
+          title: const Text('Gerenciar Animal'),
+          centerTitle: true,
+          actions: [
+            IconButton(
+                onPressed: () => Navigator.popUntil(
+                    context, ModalRoute.withName(RouteUrl.home.url)),
+                icon: const Icon(Icons.home))
+          ]),
       body: MultiBlocListener(
         listeners: [
           BlocListener<DeleteAnimalBloc, DeleteAnimalState>(
             bloc: _deleteBloc,
             listener: (context, state) {
               if (state is DeleteAnimalSuccess) {
+                BlocProvider.of<HomeBloc>(context)
+                    .add(HomeEvent(farmEntity.farmId));
+
                 showDialog(
                   context: context,
                   barrierDismissible: false,
@@ -321,7 +330,7 @@ class _AnimalPageState extends State<AnimalPage> {
                                 Navigator.pop(context);
                                 _updateBloc.add(UpdateAnimalEvent(
                                     animalEntity: _animalEntity!));
-                                appContainer.get<SearchAnimalBloc>().add(
+                                BlocProvider.of<SearchAnimalBloc>(context).add(
                                     SearchAnimalEvent(
                                         args: '', farmId: farmEntity.farmId));
                               }
