@@ -28,6 +28,7 @@ class _AppWidgetState extends State<AppWidget> {
         ),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         localizationsDelegates: const [
           S.delegate,
           GlobalMaterialLocalizations.delegate,
