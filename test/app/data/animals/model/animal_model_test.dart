@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../fixtures/mocks.dart';
+import '../../../../fixtures/mocks.dart';
 
 void main() {
   test('AnimalModel: CopyWith tests', () {

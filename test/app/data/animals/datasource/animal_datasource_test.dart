@@ -7,7 +7,7 @@ import 'package:farm_control/app/shared/storage/storage_interface.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../../fixtures/mocks.dart';
+import '../../../../fixtures/mocks.dart';
 
 class MockStorage extends Mock implements StorageInterface {}
 

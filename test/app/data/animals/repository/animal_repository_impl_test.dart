@@ -8,7 +8,7 @@ import 'package:farm_control/app/shared/errors/app_exceptions.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../../fixtures/mocks.dart';
+import '../../../../fixtures/mocks.dart';
 
 class MockAnimalDatasourceInterface extends Mock
     implements AnimalDatasourceInterface {}
